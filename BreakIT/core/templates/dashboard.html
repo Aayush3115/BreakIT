@@ -1,0 +1,8 @@
+<h2>Your Balances</h2>
+{% for user, amount in balances.items %}
+  {% if amount > 0 %}
+    <p>{{ user.username }} owes you ${{ amount|floatformat:2 }}</p>
+  {% elif amount < 0 %}
+    <p>You owe {{ user.username }} ${{ (-amount)|floatformat:2 }}</p>
+  {% endif %}
+{% endfor %}

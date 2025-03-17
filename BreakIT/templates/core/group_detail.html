@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>{{ group.name }}</h1>
+<p>Admin: {{ group.admin.username }}</p>
+<h2>Members</h2>
+<ul>
+    {% for member in group.members.all %}
+        <li>{{ member.username }}</li>
+    {% endfor %}
+</ul>
+<h2>Expenses</h2>
+<ul>
+    {% for expense in group.expense_set.all %}
+        <li>
+            {{ expense.description }}: ${{ expense.amount }} (Paid by {{ expense.payer.username }})
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_expense' group.id %}" class="btn btn-primary">Add Expense</a>
+{% endblock %}
