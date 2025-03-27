@@ -5,7 +5,6 @@ from django.conf import settings
 # Create your models here.
 
 class CustomUser(AbstractUser):
-    # Add custom fields here (optional)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 
